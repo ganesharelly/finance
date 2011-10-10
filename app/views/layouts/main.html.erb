@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <title>Starting it, let's see</title>
+
+    <%= stylesheet_link_tag 'scaffold' %>
+        <style type="text/css" media="screen">
+            body {
+                margin: 0;
+                margin-bottom: 25px;
+                padding: 0;
+                background-color: #cccccc;
+                font-family: "Lucida Grande", "Bitstream Vera Sans", "Verdana";
+                font-size: 13px;
+                color: #333;
+            }
+
+            div.button{float:left; clear:both;}
+
+            h1 {
+                font-size: 28px;
+                color: #000;
+            }
+
+           
+
+        </style>
+        <script type="text/javascript" src="javascripts/prototype.js"></script>
+        <script type="text/javascript" src="javascripts/effects.js"></script>
+        <script type="text/javascript">
+
+        </script>
+    </head>
+    <body>
+      <div class="content">
+      <div class="buttons_menu">
+  <%=   link_to raw(button_link('Transactions')), :controller => "main", :action => 'transactions'%>
+  <%=   link_to raw(button_link('Budget')), :controller => "main", :action => 'budget' %>
+  <%=   link_to raw(button_link('Statistics')), :controller => "main", :action => 'statistics' %>
+  <%=   link_to raw(button_link('Load to DB')), :controller => "main", :action => 'filetodb' %>
+
+  <%=   link_to raw(button_link('Admin')), :controller => "main", :action => 'admin' %>
+</div>
+      <div class="right_menu"><%= yield %></div>
+      </div>
+      
+      
+    </body>
+</html>

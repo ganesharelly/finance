@@ -1,0 +1,39 @@
+ div.button
+ {
+   background: url(../images/button_0.jpg); background-repeat:no-repeat;  height:30px;
+   text-align: center; width:130px; padding-top: 8px; color: white;
+ }
+
+ a:hover  div.button
+ {
+   background: url(../images/button_1.jpg);  background-repeat:no-repeat;  height:30px; font-weight: bold;
+   text-align: center; width:130px; padding-top: 8px; color: white;
+ }
+ 
+div.button_selected
+ {
+   background: url(../images/button_2.jpg);  background-repeat:no-repeat;  height:30px; font-weight: bold;
+   text-align: center; width:130px; padding-top: 8px; color: white; float: left;
+ }
+
+
+ div.buttons_menu{  width: 200px; float: left;}
+ div.right_menu { width:795px; display: inline-block;}
+ div.content{ margin-left:100px; margin-top: 50px;}
+
+ 
+ .header_table{ text-align: center; font: bold 10pt/2em Arial,Helvetica,sans-serif;
+	              color: #fff; background: #587c8f url(/images/table_header_gradient.gif) repeat-x; }
+ .AlternativeRow1 {
+background-color:#E6F2FF;
+}
+.AlternativeRow2 {
+background-color:#F9FCFF;
+}
+
+table.transactions {overflow:scroll; }
+table.t tbody { height:450px;  overflow:scroll;}
+
+
+td{ padding: 4px; }
+th{ padding: 3px; }

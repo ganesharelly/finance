@@ -1,0 +1,46 @@
+<%= form_tag :controller => 'main', :action => 'search_transactions'%>
+  <table class="table_search_offers">
+    <tr>
+      <th>Person</th>
+      <th>Amount</th>
+      <th>Type</th>
+      <th>Comment</th>
+      <th>Date</th>
+    </tr>
+    <tr>
+      <td>
+        <%=  select_tag "person", options_for_select( Hash[ TransactionPerson.all.map{|p| [ p.person, p.person ] }].merge({"All" => "All"}).sort , params ? params[:person] : "All") %>
+      </td>
+      <td>
+        <div>
+
+        <%=  select_tag "amount_condition", options_for_select(({"Any" => "Any" , ">" => "gt" , "<" => "lt" , "=" => "equal"  }).sort,   params[:amount_condition]) %>
+          <%= text_field_tag "amount",    params[:amount] , {:title =>  "Search with amount",:tabindex => 0, :size => 5} %>
+        </div>
+      </td>
+      <td>
+        <%=  select_tag "type", options_for_select(({"Debit" => "debit", "Credit" => "credit" , "Any" => "any"}).sort,  params[:type]) %>
+      </td>
+      <td>
+        <%= text_field_tag "comment",   "" , {:title =>  "Search with comment",:tabindex => 1, :size => 25} %>
+      </td>
+      <td>
+        <%puts  get_search_default_date(params[:transaction])%>
+        <%= date_select( "transaction", "done_on" , :include_blank => true, :start_year => 2006, :use_month_numbers => false, :order => [:day, :month, :year], :default =>  get_search_default_date(params[:transaction]) ) %>
+      </td>
+      <td>
+        <div><input type="submit" id="search" name="submit" value=<%=  'Search' %> /></div>
+      </td>
+    </tr>
+  </table>
+ <script type="text/javascript" src="jquery-1.3.2.min.js">
+ document.observe('dom:loaded', function() {
+
+alert('mamu');
+
+    $('transaction_done_on_3i').selectedIndex = 3;
+
+ 
+
+  });
+</script>

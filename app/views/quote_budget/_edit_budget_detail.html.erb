@@ -1,0 +1,23 @@
+
+
+<% form_for :budget_detail, :url => { :action => "update_budget_detail" , :id=> @budget_detail.id }  do |f| %>
+  <p>
+  <table>
+    <td>
+    <%= f.text_field :amount ,  :maxlength => 9 ,:value => @budget_detail.amount %>
+    </td>
+      <td>
+      <%= f.select :expense, [['EUR'],['INR'],['SEK']], :value => 1 %>
+    </td>
+    <td>
+    <%= f.text_field :description , :value =>  @budget_detail.comment%>
+     </td>
+      <td>
+        <% "Date shown" %>
+      </td>
+     <td>
+       <%= f.submit "Update" %>
+     </td>
+  </table>
+  </p>
+<% end %>

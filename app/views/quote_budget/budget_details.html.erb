@@ -1,0 +1,76 @@
+<%  if new_budget %>
+<h4>Quoting budget <%if params[:monthly_budget_id]%>for <%=  pretty_budget_month(params[:monthly_budget_id]) %> <%end%></h4>
+<% else %>
+<h4>Editing budget of <%=  pretty_budget_month(params[:monthly_budget_id]) %> </h4>
+<%end%>
+<table>
+  <tr>
+    <td>
+      <p>
+        <b><span>Budget details </span><b><br/>
+            </p>
+            </td>
+            <td align="center" style="padding-left: 20px">
+              <b><%= link_to 'Back', :action => 'budget', :controller  => 'main' %></b>
+            </td>
+            </tr>
+            </table>
+
+
+            <% if  params[:monthly_budget_id]%>
+              <% if  !@budget_details.empty?%>
+
+                <table style ="overflow:auto; height: 70px;">
+                  <thead class="header_table">
+                    <tr>
+                      <th>Amount</th>
+                      <th>To</th>
+                      <th>Description</th>
+                      <th>Date</th>
+                      <th colspan='2'>Actions</th>
+                    </tr>
+                  </thead>
+
+                  <% for b in @budget_details %>
+                    <tr class="<%= cycle('AlternativeRow2', 'AlternativeRow1') %>" >
+                      <% @id = b.id %>
+                      <%if @id.to_i == @edit_id.to_i%>
+                        <%@budget_detail =  b%>
+                        <td colspan='6'><%= render :partial => 'quote_budget/edit_budget_detail' %></td>
+                      <%else%>
+                        <td><%=h b.amount %></td>
+                        <td><%=h b.expense%></td>
+                        <td><%=h b.comment %></td>
+                        <td><%= '????' %></td>
+                        <td><%= link_to 'Edit', :action => 'edit_budget_detail' , :id => b.id  %></td>
+                        <td><%= link_to 'Destroy', :action => 'delete_budget_detail' , :id => b.id %></td>
+                      <%end%>
+                    </tr>
+                  <% end %>
+                <% end %>
+              </table>
+              <br>
+              <% if @new_budget_detail %>
+                <%= render :partial => @new_budget_detail %>
+              <% elsif not @edit_id%>
+                <%= link_to 'New Entry', :action => 'new_budget_detail' ,:params => {:monthly_budget_id =>  params[:monthly_budget_id] ,:type => 'new'} %>
+              <% end%>
+            <% else %>
+
+              <% form_for :new_quote, :url => { :action => "new_quote" }  do |f| %>
+                <table>
+                  <td>
+                    <%= f.label :Budget_Month %><br/>
+                    <%=  f.date_select :date, :start_year => 2009, :discard_day => true, :order => [:day, :month, :year]%>
+                  </td>
+                  <td><br>
+                    <%= f.submit "Create" %>
+                  </td>
+                </table>
+              <% end %>
+            <% end %>
+
+
+
+
+

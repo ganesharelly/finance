@@ -1,0 +1,16 @@
+<% if !@new %><b><%= link_to 'Add', :action => 'new_rp' %></b><% end %>
+<b><%= link_to 'Back', :action => 'admin',:controller => 'main' %></b>
+
+<% if @new  or @edit%>
+<%= form_tag :controller => 'admin', :action => 'save_rp'%>
+  <label for="person_first_name">Regular payment name</label>:
+  <%= text_field_tag "Regular payment name",    params[:name] , {:tabindex => 0, :size => 15} %>
+  <div>
+    <% if @new_budget_detail %>
+      <%= render :partial => @new_budget_detail %>
+    <% else%>
+      <%= link_to 'New payment', :action => 'new_budget_detail' ,:params => {:rp_id =>  params[:rp_id] ,:type => 'new'} %>
+    <% end %>
+  </div>
+  <div><input type="submit" id="search" name="submit" value=<%=  'Save' %> /> </div>
+<% end %>

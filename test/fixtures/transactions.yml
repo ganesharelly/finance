@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  benificiary: MyString
+  message: MyString
+  amount: 1.5
+  dated: 2011-10-06
+  id: 1
+  account: MyString
+  type: MyString
+  category: MyString
+
+two:
+  benificiary: MyString
+  message: MyString
+  amount: 1.5
+  dated: 2011-10-06
+  id: 1
+  account: MyString
+  type: MyString
+  category: MyString

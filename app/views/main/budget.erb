@@ -1,0 +1,23 @@
+
+<b><%= link_to 'Quote budget', :action => 'budget_details', :controller  => 'quote_budget' %></b>
+<% if  @budgets  %>
+<h2>Existing budgets:</h2>
+
+<table style ="overflow:auto; height: 70px;">
+                  <thead class="header_table">
+                    <tr>
+                      <th>Budget Month</th>
+                      <th colspan='2'>Actions</th>
+                    </tr>
+                  </thead>
+
+                  <% for b in @budgets %>
+                    <tr class="<%= cycle('AlternativeRow2', 'AlternativeRow1') %>" >
+                        <td><%=h b.month %></td>
+                        <td><%= link_to 'Edit', :controller=> 'quote_budget', :action => 'edit_budget' ,:monthly_budget_id => b.id  %></td>
+                        <td><%= link_to 'Destroy',  :controller=> 'quote_budget', :action => 'delete_budget' , :monthly_budget_id => b.id %></td>
+                    </tr>
+                <% end %>
+              </table>
+
+<% end %>

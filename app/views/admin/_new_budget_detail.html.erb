@@ -1,0 +1,30 @@
+
+
+<% form_for :budget_detail, :url => { :action => "create_budget_detail" }  do |f| %>
+  <table>
+    <td>
+      <%= f.label :amount %><br />
+      <%= f.text_field :amount ,  :maxlength => 6 %>
+    </td>
+      <td>
+      <%= f.label :to %><br/>
+      <%= f.select :currency, [['EUR'],['INR'],['SEK']] %>
+    </td>
+    <td>
+      <%= f.label :description %><br/>
+      <%= f.text_field :description %>
+    </td>
+    <td>
+      <%= f.label :date %><br/>
+      <%=  f.date_select :date, :start_year => 2006, :use_month_numbers => true, :order => [:day, :month, :year]%>
+    </td>
+    <td><br>
+      <%= f.submit "Create" %>
+    </td>
+    <% if params[:rp_id] %>
+    <td>
+      <%= f.hidden_field :rp_id, :value => params[:rp_id]  %>
+    </td>
+    <% end %>
+  </table>
+<% end %>

@@ -1,0 +1,14 @@
+common: &common
+  adapter: postgresql
+  username: banker
+  password: Prisma13
+  database: finance
+
+development:
+  <<: *common
+
+test:
+  <<: *common
+
+production:
+  <<: *common

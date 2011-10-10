@@ -1,0 +1,22 @@
+<% if !@transactions.empty? %>
+  <table class="transactions">
+    <tr class="header_table">
+      <th>Date</th>
+      <th>Comment</th>
+      <th>Amount</th>
+      <th>Balance</th>
+      <th>Type</th>
+    </tr>
+  <% for t in @transactions do %>
+   <tr class="<%= cycle('AlternativeRow2', 'AlternativeRow1') %>" >
+      <td><%=  t.dated%></td>
+      <td><%= t.message%></td>
+      <td><%= t.amount%></td>
+      <td><%= %></td>
+      <td><%=  t.type %></td>
+   </tr>
+  <% end %>
+  </table>
+<% else %>
+<h2>No transaction found for this search!!</h2>
+<% end %>

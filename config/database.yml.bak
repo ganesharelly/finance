@@ -1,0 +1,16 @@
+common: &common
+  adapter: postgresql
+  username: myapp
+  password: password # from psql setup, see Postgresql
+
+development:
+  <<: *common
+  database: myapp_development
+
+test:
+  <<: *common
+  database: myapp_test
+
+production:
+  <<: *common
+  database: myapp_production
